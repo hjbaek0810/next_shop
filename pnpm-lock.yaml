@@ -11,6 +11,15 @@ importers:
       '@vanilla-extract/css':
         specifier: ^1.15.3
         version: 1.15.3
+      '@vanilla-extract/css-utils':
+        specifier: ^0.1.4
+        version: 0.1.4
+      '@vanilla-extract/recipes':
+        specifier: ^0.5.3
+        version: 0.5.3(@vanilla-extract/css@1.15.3)
+      '@vanilla-extract/sprinkles':
+        specifier: ^1.6.2
+        version: 1.6.2(@vanilla-extract/css@1.15.3)
       next:
         specifier: 14.2.5
         version: 14.2.5(@babel/core@7.25.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -560,6 +569,9 @@ packages:
   '@vanilla-extract/babel-plugin-debug-ids@1.0.6':
     resolution: {integrity: sha512-C188vUEYmw41yxg3QooTs8r1IdbDQQ2mH7L5RkORBnHx74QlmsNfqVmKwAVTgrlYt8JoRaWMtPfGm/Ql0BNQrA==}
 
+  '@vanilla-extract/css-utils@0.1.4':
+    resolution: {integrity: sha512-3WRxMGa/VQaL32jZqRUpnnoVFSws5iPIUpQr+XlT4jXhtMeKYcA20rFK2k2Amkg04sqrO84A8hNMeABWZQesEg==}
+
   '@vanilla-extract/css@1.15.3':
     resolution: {integrity: sha512-mxoskDAxdQAspbkmQRxBvolUi1u1jnyy9WZGm+GeH8V2wwhEvndzl1QoK7w8JfA0WFevTxbev5d+i+xACZlPhA==}
 
@@ -573,6 +585,16 @@ packages:
 
   '@vanilla-extract/private@1.0.5':
     resolution: {integrity: sha512-6YXeOEKYTA3UV+RC8DeAjFk+/okoNz/h88R+McnzA2zpaVqTR/Ep+vszkWYlGBcMNO7vEkqbq5nT/JMMvhi+tw==}
+
+  '@vanilla-extract/recipes@0.5.3':
+    resolution: {integrity: sha512-SPREq1NmaoKuvJeOV0pppOkwy3pWZUoDufsyQ6iHrbkHhAU7XQqG9o0iZSmg5JoVgDLIiOr9djQb0x9wuxig7A==}
+    peerDependencies:
+      '@vanilla-extract/css': ^1.0.0
+
+  '@vanilla-extract/sprinkles@1.6.2':
+    resolution: {integrity: sha512-SZdrxzpAFIpRImqY/N54wODYyn6swuz+Lerd7Y1ZX5/148e6J9smpsfBf/iQpmGo17OS9b+AdYBOn7OF9cn/vA==}
+    peerDependencies:
+      '@vanilla-extract/css': ^1.0.0
 
   '@vanilla-extract/webpack-plugin@2.3.11':
     resolution: {integrity: sha512-DHHYZ3yT84FmDCgnIcgeB7gA3XtNbiHfk2/e3ugoWutKSakW6+zz0qVPV+HX7YVv9o+dlrFe0I17bCBkNaOYlA==}
@@ -2523,6 +2545,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@vanilla-extract/css-utils@0.1.4': {}
+
   '@vanilla-extract/css@1.15.3':
     dependencies:
       '@emotion/hash': 0.9.2
@@ -2581,6 +2605,14 @@ snapshots:
       - webpack
 
   '@vanilla-extract/private@1.0.5': {}
+
+  '@vanilla-extract/recipes@0.5.3(@vanilla-extract/css@1.15.3)':
+    dependencies:
+      '@vanilla-extract/css': 1.15.3
+
+  '@vanilla-extract/sprinkles@1.6.2(@vanilla-extract/css@1.15.3)':
+    dependencies:
+      '@vanilla-extract/css': 1.15.3
 
   '@vanilla-extract/webpack-plugin@2.3.11(@types/node@20.14.13)(terser@5.31.3)(webpack@5.93.0)':
     dependencies:
