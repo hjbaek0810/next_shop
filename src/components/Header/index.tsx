@@ -10,47 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { MENU_LIST } from '@/components/Layout';
+
 import * as css from './header.css';
-
-type menuListType = {
-  path: string;
-  label: string;
-};
-
-const MENU_LIST: Array<menuListType> = [
-  {
-    path: '/',
-    label: 'HOME',
-  },
-  {
-    path: '/new',
-    label: 'NEW',
-  },
-  {
-    path: '/best',
-    label: 'BEST',
-  },
-  {
-    path: '/outer',
-    label: 'OUTER',
-  },
-  {
-    path: '/top',
-    label: 'TOP',
-  },
-  {
-    path: '/bottom',
-    label: 'BOTTOM',
-  },
-  {
-    path: '/ops-sk',
-    label: 'OPS/SK',
-  },
-  {
-    path: '/acc',
-    label: 'ACC',
-  },
-];
 
 const Header = () => {
   const pathname = usePathname();

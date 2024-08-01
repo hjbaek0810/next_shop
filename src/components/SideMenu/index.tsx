@@ -1,6 +1,6 @@
-import * as css from './menu.css';
+import * as css from './sideMenu.css';
 
-const Menu = () => {
+const SideMenu = () => {
   return (
     <ul className={css.menu}>
       <li>menu1</li>
@@ -10,4 +10,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default SideMenu;
