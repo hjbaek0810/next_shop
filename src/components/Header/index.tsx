@@ -10,11 +10,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { MENU_LIST } from '@/components/Layout';
+import type { MenuListType } from '@components/Layout';
 
 import * as css from './header.css';
 
-const Header = () => {
+type HeaderPropsType = {
+  list: Array<Pick<MenuListType, 'label' | 'path'>>;
+};
+
+const Header = ({ list }: HeaderPropsType) => {
   const pathname = usePathname();
   const selected = (menuPath: string) => menuPath === pathname;
 
@@ -27,7 +31,7 @@ const Header = () => {
 
       <div className={css.bar}>
         <ul className={css.menu}>
-          {MENU_LIST.map(({ label, path }) => (
+          {list.map(({ label, path }) => (
             <li
               key={label}
               className={css.menuItem({ selected: selected(path) })}
