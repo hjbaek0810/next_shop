@@ -1,3 +1,5 @@
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import { Inter } from 'next/font/google';
 
 import '@styles/global.css';
@@ -5,6 +7,8 @@ import '@styles/global.css';
 import Layout from '@components/Layout';
 
 import type { Metadata } from 'next';
+
+config.autoAddCss = false;
 
 const inter = Inter({ subsets: ['latin'] });
 
