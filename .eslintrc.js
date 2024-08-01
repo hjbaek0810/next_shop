@@ -54,7 +54,6 @@ module.exports = {
     eqeqeq: ['warn', 'always'],
     'react/react-in-jsx-scope': 'off',
     'prefer-destructuring': 'warn',
-    'arrow-body-style': ['warn', 'always'],
     'sort-imports': [
       'warn',
       {
