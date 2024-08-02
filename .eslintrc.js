@@ -40,7 +40,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-unused-vars': ['warn'],
     'no-unused-vars': 'off',
-    'no-console': 'warn',
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-var': 'error',
     'no-duplicate-case': 'error',
     'padding-line-between-statements': [
