@@ -36,6 +36,12 @@ export const sliderItem = recipe({
   },
 });
 
+export const sliderLink = style({
+  width: 'inherit',
+  height: 'inherit',
+  position: 'inherit',
+});
+
 export const sliderDotList = style({
   position: 'absolute',
   bottom: '20px',

@@ -3,15 +3,24 @@
 import {
   Children,
   type PropsWithChildren,
-  createContext,
-  useContext,
+  useCallback,
+  useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 
 import clsx from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 
+import {
+  SliderActionContext,
+  SliderValueContext,
+  type SliderValueContextType,
+  useSliderActionContext,
+  useSliderValueContext,
+} from '@/components/Slider/context';
 import { passPropsToSingleChild } from '@/utils/render';
 import { sprinkles } from '@styles/sprinkles.css';
 
@@ -19,14 +28,7 @@ import * as css from './slider.css';
 
 import type { sizing } from '@styles/tokens';
 
-type SliderActionContextType = {
-  updateShowIndex: (index: number) => void;
-};
-
-type SliderValueContextType = {
-  showIndex: number;
-  showDot?: boolean;
-};
+type SliderRootPropsType = Pick<SliderValueContextType, 'showDot' | 'autoPlay'>;
 
 type SliderListPropsType = {
   width?: keyof typeof sizing;
@@ -37,40 +39,26 @@ type SliderItemPropsType = {
   itemIndex?: number;
 };
 
-const SliderActionContext = createContext<SliderActionContextType | null>(null);
-const SliderValueContext = createContext<SliderValueContextType | null>(null);
-
-const useSliderActionContext = () => {
-  const context = useContext(SliderActionContext);
-
-  if (!context) {
-    throw new Error('This component must be used within Slider component');
-  }
-
-  return context;
-};
-
-const useSliderValueContext = () => {
-  const context = useContext(SliderValueContext);
-
-  if (!context) {
-    throw new Error('This component must be used within Slider component');
-  }
-
-  return context;
+type SliderClickableImagePropsType = {
+  src: string;
+  alt?: string;
+  redirectTo: string;
 };
 
 const SliderRoot = ({
   showDot = true,
+  autoPlay = true,
   children,
-}: PropsWithChildren<Pick<SliderValueContextType, 'showDot'>>) => {
+}: PropsWithChildren<SliderRootPropsType>) => {
   const [showIndex, setShowIndex] = useState<number>(0);
+
   const values = useMemo(
     () => ({
       showIndex,
       showDot,
+      autoPlay,
     }),
-    [showDot, showIndex],
+    [autoPlay, showDot, showIndex],
   );
 
   const actions = useMemo(
@@ -95,15 +83,47 @@ const SliderList = ({
   children,
 }: PropsWithChildren<SliderListPropsType>) => {
   const { updateShowIndex } = useSliderActionContext();
-  const { showIndex, showDot } = useSliderValueContext();
-
-  const handleDotClick = (index: number) => updateShowIndex(index);
+  const { showIndex, showDot, autoPlay } = useSliderValueContext();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const modifiedChildren = Children.map(children, (child, index) =>
     passPropsToSingleChild(child, {
       itemIndex: index,
     }),
   );
+
+  const totalSliderItem = modifiedChildren?.length ?? 0;
+
+  const startAutoPlay = useCallback(() => {
+    intervalRef.current = setInterval(() => {
+      updateShowIndex(prevIndex =>
+        prevIndex === totalSliderItem - 1 ? 0 : prevIndex + 1,
+      );
+    }, 5000);
+  }, [totalSliderItem, updateShowIndex]);
+
+  const handleDotClick = (index: number) => {
+    updateShowIndex(index);
+
+    if (autoPlay) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      startAutoPlay();
+    }
+  };
+
+  useEffect(() => {
+    if (!autoPlay) return;
+
+    startAutoPlay();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [autoPlay, startAutoPlay]);
 
   return (
     <>
@@ -120,9 +140,9 @@ const SliderList = ({
       </ul>
       {/* dot button */}
       {/* TODO : inner, outer 보완 */}
-      {showDot && modifiedChildren?.length && (
+      {showDot && (
         <ul className={css.sliderDotList}>
-          {Array.from({ length: modifiedChildren.length }, (_, index) => {
+          {Array.from({ length: totalSliderItem }, (_, index) => {
             return (
               <li key={`dot-${index}`}>
                 <button
@@ -151,14 +171,22 @@ const SliderItem = ({
   );
 };
 
-const SliderPhoto = ({ src, alt }: { src: string; alt: string }) => {
-  return <Image src={src} alt={alt} fill />;
+const SliderClickableImage = ({
+  src,
+  alt,
+  redirectTo,
+}: SliderClickableImagePropsType) => {
+  return (
+    <Link className={css.sliderLink} href={redirectTo}>
+      <Image src={src} alt={alt || src} fill priority />
+    </Link>
+  );
 };
 
 const Slider = Object.assign(SliderRoot, {
   List: SliderList,
   Item: SliderItem,
-  Photo: SliderPhoto,
+  ClickableImage: SliderClickableImage,
 });
 
 export default Slider;
