@@ -1,5 +1,13 @@
+'use client';
+
+import Banner from '@app/sections/Banner';
+
 const Home = () => {
-  return <main>Home</main>;
+  return (
+    <main>
+      <Banner />
+    </main>
+  );
 };
 
 export default Home;
