@@ -3,6 +3,8 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { createContext, useContext } from 'react';
 
+import type { SliderVariants } from '@/components/Slider/slider.css';
+
 export type SliderActionContextType = {
   updateShowIndex: Dispatch<SetStateAction<number>>;
 };
@@ -11,7 +13,7 @@ export type SliderValueContextType = {
   showIndex: number;
   showDot?: boolean;
   autoPlay?: boolean;
-};
+} & Required<Pick<SliderVariants, 'type'>>;
 
 export const SliderActionContext =
   createContext<SliderActionContextType | null>(null);

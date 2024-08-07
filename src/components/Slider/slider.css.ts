@@ -1,42 +1,75 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { tokens } from '@/styles/token.css';
+import { tokens } from '@styles/token.css';
+
+import type { RecipeVariants } from '@vanilla-extract/recipes';
+
+export const itemIndexVar = createVar();
 
 export const sliderRoot = style({
   position: 'relative',
-});
-
-export const sliderList = style({
-  position: 'relative',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  overflow: 'hidden',
 });
 
 export const sliderItem = recipe({
   base: {
     width: '100%',
     height: '100%',
-    position: 'absolute',
-    transition: 'opacity 0.3s ease-in-out',
   },
   variants: {
-    active: {
-      true: {
-        opacity: 1,
+    type: {
+      fade: {
+        position: 'absolute',
+        transition: 'opacity 0.3s ease-in-out',
       },
-      false: {
-        opacity: 0,
+      carousel: {
+        position: 'relative',
+        flexShrink: '0',
       },
     },
+    active: {
+      true: {},
+      false: {},
+    },
   },
+  compoundVariants: [
+    {
+      variants: {
+        type: 'fade',
+        active: true,
+      },
+      style: { opacity: 1 },
+    },
+    {
+      variants: {
+        type: 'fade',
+        active: false,
+      },
+      style: { opacity: 0 },
+    },
+  ],
   defaultVariants: {
+    type: 'fade',
     active: false,
   },
 });
 
+export const sliderList = style({
+  display: 'flex',
+
+  selectors: {
+    [`&:has(.${sliderItem.classNames.variants.type.carousel})`]: {
+      position: 'relative',
+      right: calc.multiply(itemIndexVar, '100%'),
+      transition: 'all 800ms',
+    },
+  },
+});
+
 export const sliderLink = style({
+  display: 'block',
   width: 'inherit',
   height: 'inherit',
   position: 'inherit',
@@ -70,3 +103,5 @@ export const sliderDotItem = recipe({
     },
   },
 });
+
+export type SliderVariants = NonNullable<RecipeVariants<typeof sliderItem>>;

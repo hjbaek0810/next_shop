@@ -1,5 +1,4 @@
 'use client';
-
 import {
   Children,
   type PropsWithChildren,
@@ -10,9 +9,12 @@ import {
   useState,
 } from 'react';
 
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { sprinkles } from '@styles/sprinkles.css';
 
 import {
   SliderActionContext,
@@ -20,15 +22,18 @@ import {
   type SliderValueContextType,
   useSliderActionContext,
   useSliderValueContext,
-} from '@/components/Slider/context';
-import { passPropsToSingleChild } from '@/utils/render';
-import { sprinkles } from '@styles/sprinkles.css';
+} from '@components/Slider/context';
+import { passPropsToSingleChild } from '@utils/render';
 
 import * as css from './slider.css';
+import { itemIndexVar } from './slider.css';
 
 import type { sizing } from '@styles/tokens';
 
-type SliderRootPropsType = Pick<SliderValueContextType, 'showDot' | 'autoPlay'>;
+type SliderRootPropsType = Pick<
+  SliderValueContextType,
+  'showDot' | 'autoPlay' | 'type'
+>;
 
 type SliderListPropsType = {
   width?: keyof typeof sizing;
@@ -48,6 +53,7 @@ type SliderClickableImagePropsType = {
 const SliderRoot = ({
   showDot = true,
   autoPlay = true,
+  type,
   children,
 }: PropsWithChildren<SliderRootPropsType>) => {
   const [showIndex, setShowIndex] = useState<number>(0);
@@ -57,8 +63,9 @@ const SliderRoot = ({
       showIndex,
       showDot,
       autoPlay,
+      type,
     }),
-    [autoPlay, showDot, showIndex],
+    [autoPlay, showDot, showIndex, type],
   );
 
   const actions = useMemo(
@@ -128,6 +135,9 @@ const SliderList = ({
   return (
     <>
       <ul
+        style={assignInlineVars({
+          [itemIndexVar]: String(showIndex),
+        })}
         className={clsx(
           css.sliderList,
           sprinkles({
@@ -162,10 +172,10 @@ const SliderItem = ({
   itemIndex,
   children,
 }: PropsWithChildren<SliderItemPropsType>) => {
-  const { showIndex } = useSliderValueContext();
+  const { showIndex, type } = useSliderValueContext();
 
   return (
-    <li className={css.sliderItem({ active: itemIndex === showIndex })}>
+    <li className={css.sliderItem({ active: itemIndex === showIndex, type })}>
       {children}
     </li>
   );
