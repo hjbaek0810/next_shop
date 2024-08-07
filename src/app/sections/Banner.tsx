@@ -4,7 +4,7 @@ import Slider from '@components/Slider';
 
 /* TODO: 임시 로컬 이미지 사용 */
 const Banner = () => (
-  <Slider>
+  <Slider type="fade">
     <Slider.List height="sizing-640">
       <Slider.Item>
         <Slider.ClickableImage
