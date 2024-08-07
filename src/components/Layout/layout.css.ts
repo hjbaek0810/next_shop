@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { ColorPalettes } from '@/styles/palette';
+import { ColorPalettes } from '@styles/palette';
 
 import { HEADER_BAR_HEIGHT } from '@components/Header/header.css';
 import { SIDE_MENU_WIDTH } from '@components/SideMenu/sideMenu.css';
