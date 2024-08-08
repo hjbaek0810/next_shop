@@ -23,13 +23,13 @@ const Header = ({ list }: HeaderPropsType) => {
   const selected = (menuPath: string) => menuPath === pathname;
 
   return (
-    <div className={css.header}>
+    <header className={css.header}>
       {/* TODO : logo img */}
-      <Link className={css.logo} href="/">
-        Logo
-      </Link>
+      <h1 className={css.logo}>
+        <Link href="/">Logo</Link>
+      </h1>
 
-      <div className={css.bar}>
+      <nav className={css.bar}>
         <ul className={css.menu}>
           {list.map(({ label, path }) => (
             <li
@@ -64,8 +64,8 @@ const Header = ({ list }: HeaderPropsType) => {
             </Link>
           </li>
         </ul>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 

@@ -19,36 +19,38 @@ const SideMenu = ({ list }: SideMenuPropsType) => {
   const categorySearch = searchParams.get('category');
 
   return (
-    <ul className={css.sideMenu}>
-      <li
-        className={css.sideMenuItemBg({
-          selected: categorySearch === null,
-        })}
-      >
-        <Link
-          className={css.sideMenuItem}
-          href={getPathQuery('category', null)}
-        >
-          ALL
-        </Link>
-      </li>
-      {/* TODO: 카테고리를 BE api에서 조회하도록? */}
-      {list.map(item => (
+    <aside>
+      <ul className={css.sideMenu}>
         <li
-          key={item}
           className={css.sideMenuItemBg({
-            selected: categorySearch === item,
+            selected: categorySearch === null,
           })}
         >
           <Link
             className={css.sideMenuItem}
-            href={getPathQuery('category', item)}
+            href={getPathQuery('category', null)}
           >
-            {item}
+            ALL
           </Link>
         </li>
-      ))}
-    </ul>
+        {/* TODO: 카테고리를 BE api에서 조회하도록? */}
+        {list.map(item => (
+          <li
+            key={item}
+            className={css.sideMenuItemBg({
+              selected: categorySearch === item,
+            })}
+          >
+            <Link
+              className={css.sideMenuItem}
+              href={getPathQuery('category', item)}
+            >
+              {item}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </aside>
   );
 };
 
