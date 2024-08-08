@@ -4,17 +4,17 @@ import { tokens } from './token.css';
 
 const spacingProperties = defineProperties({
   properties: {
-    padding: tokens.gap,
-    paddingTop: tokens.gap,
-    paddingBottom: tokens.gap,
-    paddingLeft: tokens.gap,
-    paddingRight: tokens.gap,
-    margin: { ...tokens.gap, horizontalCenter: '0 auto' },
-    marginTop: tokens.gap,
-    marginBottom: tokens.gap,
-    marginLeft: tokens.gap,
-    marginRight: tokens.gap,
-    gap: tokens.gap,
+    padding: tokens.spacing,
+    paddingTop: tokens.spacing,
+    paddingBottom: tokens.spacing,
+    paddingLeft: tokens.spacing,
+    paddingRight: tokens.spacing,
+    margin: { ...tokens.spacing, horizontalCenter: '0 auto' },
+    marginTop: tokens.spacing,
+    marginBottom: tokens.spacing,
+    marginLeft: tokens.spacing,
+    marginRight: tokens.spacing,
+    gap: tokens.spacing,
   },
   shorthands: {
     paddingX: ['paddingRight', 'paddingLeft'],
@@ -41,10 +41,17 @@ const sizingProperties = defineProperties({
   },
 });
 
+const zIndexProperties = defineProperties({
+  properties: {
+    zIndex: tokens.zIndex,
+  },
+});
+
 export const sprinkles = createSprinkles(
   spacingProperties,
   fontProperties,
   sizingProperties,
+  zIndexProperties,
 );
 
 export type Sprinkles = Parameters<typeof sprinkles>[0];

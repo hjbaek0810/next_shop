@@ -16,7 +16,7 @@ export const sideMenu = style({
 
 export const sideMenuItem = style({
   display: 'block',
-  padding: tokens.gap['spacing-016'],
+  padding: tokens.spacing['spacing-016'],
   fontSize: tokens.fontSize['font-size-014'],
   fontWeight: 600,
 });

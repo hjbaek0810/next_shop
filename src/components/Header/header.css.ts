@@ -13,10 +13,12 @@ export const header = style({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  gap: tokens.gap['spacing-004'],
-  padding: tokens.gap['spacing-016'],
+  gap: tokens.spacing['spacing-004'],
+  padding: tokens.spacing['spacing-016'],
   width: '100%',
   height: HEADER_BAR_HEIGHT,
+  backgroundColor: 'white',
+  zIndex: tokens.zIndex['z-index-sticky'],
 });
 
 export const logo = style({
@@ -28,12 +30,12 @@ export const bar = style({
   width: '100%',
   display: 'flex',
   justifyContent: 'space-between',
-  gap: tokens.gap['spacing-008'],
+  gap: tokens.spacing['spacing-008'],
 });
 
 export const menu = style({
   display: 'flex',
-  gap: tokens.gap['spacing-012'],
+  gap: tokens.spacing['spacing-012'],
   fontSize: tokens.fontSize['font-size-014'],
 });
 
