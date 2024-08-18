@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from 'react';
+import { NumericFormat } from 'react-number-format';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -45,12 +46,24 @@ const CardPrice = ({ originalPrice, discountRate }: CardPricePropsType) => {
 
   return (
     <p className={css.cardPriceWrap}>
-      <span className={css.cardProductPrice}>{productPrice}</span>
+      <span className={css.cardProductPrice}>
+        <NumericFormat
+          value={productPrice}
+          displayType="text"
+          thousandSeparator=","
+        />
+      </span>
 
       {discountRate && (
         <>
           <span className={css.cardDiscountRate}>{discountRate}%</span>
-          <span className={css.cardProductOriginalPrice}>{originalPrice}</span>
+          <span className={css.cardProductOriginalPrice}>
+            <NumericFormat
+              value={originalPrice}
+              displayType="text"
+              thousandSeparator=","
+            />
+          </span>
         </>
       )}
     </p>
