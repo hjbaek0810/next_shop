@@ -6,11 +6,13 @@ import { ColorPalettes } from '@styles/palette';
 import { HEADER_BAR_HEIGHT } from '@components/Header/header.css';
 import { SIDE_MENU_WIDTH } from '@components/SideMenu/sideMenu.css';
 
+export const WEB_WIDTH = '1350px';
+
 export const layout = style({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  minWidth: '1350px', // web
+  minWidth: WEB_WIDTH,
   minHeight: '100vh',
   backgroundColor: 'white',
 });

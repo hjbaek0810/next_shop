@@ -3,7 +3,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { createContext, useContext } from 'react';
 
-import type { SliderVariants } from '@/components/Slider/slider.css';
+import type { SliderVariants } from '@components/Slider/slider.css';
 
 export type SliderActionContextType = {
   updateShowIndex: Dispatch<SetStateAction<number>>;
