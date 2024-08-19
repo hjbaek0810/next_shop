@@ -1,6 +1,6 @@
 'use server';
 
-import { getPosts } from '../../../_actions/postActions';
+import { getPosts } from '@actions/postActions';
 
 const Test = async () => {
   const { data, errMsg } = await getPosts();

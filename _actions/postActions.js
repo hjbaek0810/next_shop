@@ -1,8 +1,9 @@
 'use server';
 
-import PostModel from '../models/postModel';
-import connectDB from '../config/database';
+import PostModel from '@models/postModel';
+import connectDB from '@config/database';
 
+// TODO :: api 폴더
 export async function getPosts() {
   try {
     await connectDB();
