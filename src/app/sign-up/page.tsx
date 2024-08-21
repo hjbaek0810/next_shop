@@ -57,7 +57,6 @@ const SignUp = () => {
                   type="password"
                   name="password"
                   rules={passwordRules}
-                  resetErrorOnBlur={false}
                   placeholder="영문 대소문자/숫자 모두 포함, 8자~16자"
                 />
                 <Rhf.ErrorMessage name="password" />
@@ -74,7 +73,6 @@ const SignUp = () => {
                 <Rhf.Input
                   type="password"
                   name="confirmPassword"
-                  resetErrorOnBlur={false}
                   rules={{
                     required: true,
                     validate: value =>

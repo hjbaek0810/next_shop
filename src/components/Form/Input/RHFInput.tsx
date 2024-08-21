@@ -4,9 +4,8 @@ import { get, useFormContext } from 'react-hook-form';
 
 import { isEmpty } from 'lodash-es';
 
-import Input from '@components/Form/Input';
-
 import type { CommonRHFPropsType } from '@components/Form';
+import Input from '@components/Form/Input';
 import type { InputPropsType } from '@components/Form/Input';
 
 type RHFInputPropsType<T extends FieldValues> = CommonRHFPropsType<
@@ -20,7 +19,7 @@ const RHFInput = <T extends FieldValues>({
   required,
   onChange,
   onBlur,
-  resetErrorOnBlur = true,
+  resetErrorOnBlur = false,
   ...restProps
 }: RHFInputPropsType<T>) => {
   const {
