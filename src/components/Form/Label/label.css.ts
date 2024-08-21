@@ -14,7 +14,7 @@ export const label = recipe({
   variants: {
     error: {
       true: {
-        color: '#C5212E',
+        color: ColorPalettes.Red['20'],
       },
       false: {
         color: ColorPalettes.Grey['10'],
@@ -27,7 +27,7 @@ export const label = recipe({
 });
 
 export const star = style({
-  color: '#C5212E',
+  color: ColorPalettes.Red['20'],
 });
 
 export type LabelVariants = NonNullable<RecipeVariants<typeof label>>;
