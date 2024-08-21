@@ -20,12 +20,13 @@ export const inputWrapper = style({
 export const input = recipe({
   base: [
     sprinkles({
+      width: 'sizing-fill',
+      height: 'sizing-032',
       paddingY: 'spacing-008',
+      paddingLeft: 'spacing-008',
     }),
     {
-      width: '100%',
       backgroundColor: 'white',
-      paddingLeft: tokens.spacing['spacing-008'],
     },
   ],
   variants: {
