@@ -3,9 +3,9 @@ import { get, useFormContext } from 'react-hook-form';
 
 import { isEmpty } from 'lodash-es';
 
-import Label from '@/components/Form/Label';
+import Label from '@components/Form/Label';
 
-import type { LabelPropsType } from '@/components/Form/Label';
+import type { LabelPropsType } from '@components/Form/Label';
 
 type RHFLabelPropsType = Pick<LabelPropsType, 'name' | 'required'>;
 

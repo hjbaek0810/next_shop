@@ -1,13 +1,13 @@
 import { style } from '@vanilla-extract/css';
 
-import { sprinkles } from '@/styles/sprinkles.css';
-import { tokens } from '@/styles/token.css';
+import { sprinkles } from '@styles/sprinkles.css';
+import { tokens } from '@styles/token.css';
 
 export const signUpFormWrapper = style({
   display: 'flex',
   flexDirection: 'column',
   gap: tokens.spacing['spacing-024'],
-  padding:tokens.spacing['spacing-016']
+  padding: tokens.spacing['spacing-016'],
 });
 
 export const titleSection = style({

@@ -22,7 +22,7 @@
       "@models/*": ["./models/*"],
       "@config/*": ["./config/*"],
       "@actions/*": ["./_actions/*"],
-      "@/*": ["./src/*"],
+      // "@/*": ["./src/*"],
       "@styles/*": ["./src/styles/*"],
       "@components/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"],

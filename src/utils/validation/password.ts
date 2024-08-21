@@ -1,7 +1,7 @@
 import {
   REGEX_CONTINUOUS_DIGITS,
   REG_UPPER_LOWER_CASE_LETTERS,
-} from '@/utils/regExp';
+} from '@utils/regExp';
 
 // const REG_PASSWORD_LENGTH = /^.{8,16}$/;
 

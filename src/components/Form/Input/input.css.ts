@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { ColorPalettes } from '@/styles/palette';
-import { sprinkles } from '@/styles/sprinkles.css';
-import { tokens } from '@/styles/token.css';
+import { ColorPalettes } from '@styles/palette';
+import { sprinkles } from '@styles/sprinkles.css';
+import { tokens } from '@styles/token.css';
 
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 

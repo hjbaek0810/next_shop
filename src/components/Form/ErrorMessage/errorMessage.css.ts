@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-import { ColorPalettes } from '@/styles/palette';
-import { tokens } from '@/styles/token.css';
+import { ColorPalettes } from '@styles/palette';
+import { tokens } from '@styles/token.css';
 
 export const message = style({
   marginLeft: tokens.spacing['spacing-002'],

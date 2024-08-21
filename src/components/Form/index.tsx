@@ -7,9 +7,9 @@ import type {
 } from 'react-hook-form';
 import { type FieldValues, FormProvider } from 'react-hook-form';
 
-import RHFErrorMessage from '@/components/Form/ErrorMessage';
-import RHFInput from '@/components/Form/Input/RHFInput';
-import RHFLabel from '@/components/Form/Label/RHFLabel';
+import RHFErrorMessage from '@components/Form/ErrorMessage';
+import RHFInput from '@components/Form/Input/RHFInput';
+import RHFLabel from '@components/Form/Label/RHFLabel';
 
 export type CommonRHFPropsType<T, U extends FieldValues> = {
   name?: FieldPath<U>;

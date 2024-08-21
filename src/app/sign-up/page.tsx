@@ -2,9 +2,9 @@
 
 import { useForm, useWatch } from 'react-hook-form';
 
-import Rhf from '@/components/Form';
-import { Table } from '@/components/Table';
-import { isConfirmPasswordValidate, passwordRules } from '@/utils/validation';
+import Rhf from '@components/Form';
+import { Table } from '@components/Table';
+import { isConfirmPasswordValidate, passwordRules } from '@utils/validation';
 
 import * as css from './signUp.css';
 
