@@ -27,6 +27,7 @@ export const label = recipe({
 });
 
 export const star = style({
+  marginLeft: tokens.spacing['spacing-004'],
   color: ColorPalettes.Red['20'],
 });
 

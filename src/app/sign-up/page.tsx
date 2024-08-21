@@ -37,6 +37,7 @@ const SignUp = () => {
           <Table.Body>
             <Table.Tr>
               <Table.Th scope="row">
+                {/* TODO :: 중복확인 */}
                 <Rhf.Label name="userId" required>
                   아이디
                 </Rhf.Label>
@@ -99,6 +100,7 @@ const SignUp = () => {
             </Table.Tr>
             <Table.Tr>
               <Table.Th scope="row">
+                {/* TODO: 연락처 본인 인증 api 연결 */}
                 <Rhf.Label name="telephone" required>
                   연락처
                 </Rhf.Label>
@@ -124,14 +126,26 @@ const SignUp = () => {
                 </Rhf.Label>
               </Table.Th>
               <Table.Td>
-                <Rhf.Input name="email" rules={emailRules} />
+                {/* TODO: 직접입력 또는 select box로 이메일 주소 선택할 수 있도록 수정 */}
+                <Rhf.Input
+                  name="email"
+                  rules={emailRules}
+                  placeholder="e.g. example@google.com"
+                />
                 <Rhf.ErrorMessage name="email" />
               </Table.Td>
               <Table.Td />
             </Table.Tr>
           </Table.Body>
         </Table>
-        <button type="submit">제출</button>
+        <button
+          type="submit"
+          onClick={() => {
+            console.log(signUpForm.getValues());
+          }}
+        >
+          제출
+        </button>
       </Rhf.Form>
     </div>
   );

@@ -1,5 +1,5 @@
 import {
-  REGEX_CONTINUOUS_DIGITS,
+  REG_CONTINUOUS_DIGITS,
   REG_UPPER_LOWER_CASE_LETTERS,
 } from '@utils/regExp';
 
@@ -7,7 +7,7 @@ import {
 
 // const isCorrectLength = (value: string) => REG_PASSWORD_LENGTH.test(value);
 
-const hasNumber = (value: string) => REGEX_CONTINUOUS_DIGITS.test(value);
+const hasNumber = (value: string) => REG_CONTINUOUS_DIGITS.test(value);
 
 const hasLowercaseAndUppercaseLetter = (value: string) =>
   REG_UPPER_LOWER_CASE_LETTERS.test(value);

@@ -7,7 +7,7 @@ export const emailRules = {
   required: true,
   pattern: {
     value: REG_EMAIL,
-    message: '이메일 형식을 다시 확인해주세요.',
+    message: '이메일 형식이 올바르지 않습니다.',
   },
   maxLength: {
     value: MAX_LENGTH,
