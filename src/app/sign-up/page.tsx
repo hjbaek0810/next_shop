@@ -6,9 +6,12 @@ import Rhf from '@components/Form';
 import { Table } from '@components/Table';
 import {
   emailRules,
+  formatPhoneNumber,
   isConfirmPasswordValidate,
   passwordRules,
+  telephoneRules,
 } from '@utils/validation';
+import { PHONE_MAX_LENGTH } from '@utils/validation/telephone';
 
 import * as css from './signUp.css';
 
@@ -106,7 +109,20 @@ const SignUp = () => {
                 </Rhf.Label>
               </Table.Th>
               <Table.Td>
-                <Rhf.Input name="telephone" required />
+                <Rhf.Input
+                  type="tel"
+                  name="telephone"
+                  placeholder="e.g. 010-1234-5678"
+                  onInput={event => {
+                    const formattedPhoneNumber = formatPhoneNumber(
+                      event.currentTarget.value,
+                    );
+                    signUpForm.setValue('telephone', formattedPhoneNumber);
+                  }}
+                  maxLength={PHONE_MAX_LENGTH}
+                  rules={telephoneRules}
+                />
+                <Rhf.ErrorMessage name="telephone" />
               </Table.Td>
               <Table.Td />
             </Table.Tr>
