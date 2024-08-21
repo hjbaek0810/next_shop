@@ -12,7 +12,7 @@ import type { InputPropsType } from '@/components/Form/Input';
 type RHFInputPropsType<T extends FieldValues> = CommonRHFPropsType<
   InputPropsType,
   T
->;
+> & { resetErrorOnBlur?: boolean };
 
 const RHFInput = <T extends FieldValues>({
   name = '' as Path<T>,
@@ -20,6 +20,7 @@ const RHFInput = <T extends FieldValues>({
   required,
   onChange,
   onBlur,
+  resetErrorOnBlur = true,
   ...restProps
 }: RHFInputPropsType<T>) => {
   const {
@@ -41,7 +42,7 @@ const RHFInput = <T extends FieldValues>({
   };
 
   const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    if (error) clearErrors(name);
+    if (resetErrorOnBlur && error) clearErrors(name);
 
     inputRegister.onBlur(event);
     onBlur?.(event);
