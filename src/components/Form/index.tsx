@@ -7,9 +7,9 @@ import type {
 } from 'react-hook-form';
 import { type FieldValues, FormProvider } from 'react-hook-form';
 
+import RHFErrorMessage from '@/components/Form/ErrorMessage';
 import RHFInput from '@/components/Form/Input/RHFInput';
 import RHFLabel from '@/components/Form/Label/RHFLabel';
-import { passPropsToChildren } from '@/utils/render';
 
 export type CommonRHFPropsType<T, U extends FieldValues> = {
   name?: FieldPath<U>;
@@ -19,14 +19,6 @@ export type CommonRHFPropsType<T, U extends FieldValues> = {
 type RHFFormPropsType<T extends FieldValues> = UseFormReturn<T> & {
   id?: string;
   onSubmit: SubmitHandler<T>;
-};
-
-type ControlPropsType<T extends FieldValues> = {
-  name: string;
-  required?: boolean;
-  disabled?: boolean;
-  readOnly?: boolean;
-  rules?: RegisterOptions<T>;
 };
 
 const Form = <T extends FieldValues>({
@@ -42,17 +34,11 @@ const Form = <T extends FieldValues>({
   </FormProvider>
 );
 
-const Control = <T extends FieldValues>({
-  children,
-  ...props
-}: PropsWithChildren<ControlPropsType<T>>) =>
-  passPropsToChildren(children, props);
-
 const Rhf = {
   Form,
-  Control,
   Label: RHFLabel,
   Input: RHFInput,
+  ErrorMessage: RHFErrorMessage,
 };
 
 export default Rhf;

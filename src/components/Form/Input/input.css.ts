@@ -48,7 +48,7 @@ export const errorIcon = style({
   top: '50%',
   right: '0.4rem',
   transform: 'translateY(-50%)',
-  color: '#C5212E',
+  color: ColorPalettes.Red['20'],
   fontSize: tokens.fontSize['font-size-016'],
 });
 
