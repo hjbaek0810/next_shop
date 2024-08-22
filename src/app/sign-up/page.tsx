@@ -1,12 +1,11 @@
 'use client';
 
-import { useForm, useWatch } from 'react-hook-form';
+import useSignUp from '@app/sign-up/useSignUp';
 
 import Rhf from '@components/Form';
 import { Table } from '@components/Table';
 import {
   emailRules,
-  formatPhoneNumber,
   isConfirmPasswordValidate,
   passwordRules,
   telephoneRules,
@@ -16,11 +15,12 @@ import { PHONE_MAX_LENGTH } from '@utils/validation/telephone';
 import * as css from './signUp.css';
 
 const SignUp = () => {
-  const signUpForm = useForm();
-  const passwordValue = useWatch({
-    name: 'password',
-    control: signUpForm.control,
-  });
+  const {
+    signUpForm,
+    passwordValue,
+    handleTelephoneInput,
+    handleFindPostCodeButtonClick,
+  } = useSignUp();
 
   return (
     <div className={css.signUpFormWrapper}>
@@ -113,12 +113,7 @@ const SignUp = () => {
                   type="tel"
                   name="telephone"
                   placeholder="e.g. 010-1234-5678"
-                  onInput={event => {
-                    const formattedPhoneNumber = formatPhoneNumber(
-                      event.currentTarget.value,
-                    );
-                    signUpForm.setValue('telephone', formattedPhoneNumber);
-                  }}
+                  onInput={handleTelephoneInput}
                   maxLength={PHONE_MAX_LENGTH}
                   rules={telephoneRules}
                 />
@@ -131,7 +126,24 @@ const SignUp = () => {
                 <Rhf.Label name="address">주소</Rhf.Label>
               </Table.Th>
               <Table.Td>
-                <Rhf.Input name="address" />
+                <div className={css.addressFormWrapper}>
+                  <div className={css.zoneCodeWrapper}>
+                    <Rhf.Input
+                      name="postCode"
+                      placeholder="우편번호"
+                      readOnly
+                    />
+                    <button
+                      type="button"
+                      className={css.findZoneCodeButton}
+                      onClick={handleFindPostCodeButtonClick}
+                    >
+                      우편번호 찾기
+                    </button>
+                  </div>
+                  <Rhf.Input name="address" placeholder="주소" readOnly />
+                  <Rhf.Input name="addressDetail" placeholder="상세주소" />
+                </div>
               </Table.Td>
               <Table.Td />
             </Table.Tr>
