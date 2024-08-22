@@ -27,6 +27,13 @@ export const input = recipe({
     }),
     {
       backgroundColor: 'white',
+
+      selectors: {
+        '&[readonly]': {
+          pointerEvents: 'none',
+          backgroundColor: 'transparent',
+        },
+      },
     },
   ],
   variants: {
