@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import '@styles/global.css';
 
 import Layout from '@components/Layout';
+import ModalsProvider from '@utils/modals/provider';
 
 import type { Metadata } from 'next';
 
@@ -25,7 +26,9 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Layout>{children}</Layout>
+        <ModalsProvider>
+          <Layout>{children}</Layout>
+        </ModalsProvider>
       </body>
     </html>
   );
